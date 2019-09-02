@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             if(produkter[index].count < 0){
                 produkter[index].count = 0;
             }
+            
             produkter[index].totalPris = produkter[index].count * produkter[index].pris;
             knap.parentElement.querySelector('.antal').textContent = produkter[index].count;
             knap.parentElement.querySelector('.pris').textContent = produkter[index].totalPris+'kr';
