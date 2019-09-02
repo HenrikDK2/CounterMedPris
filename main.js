@@ -8,23 +8,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
     ];
 
     for(let i=0; i<produktList.length; i++){
-        produktList[i].addEventListener('click', update);
+        produktList[i].addEventListener('click', skift);
     }
 
-    function update(e){
+    function skift(e){
         let index = produktArray.indexOf(e.currentTarget);
-
+        
         if(e.target.getAttribute('class') === 'btn btn-plus'){
             produkter[index].count++;   
+            update(e.target);
         }else if(e.target.getAttribute('class') === 'btn btn-minus'){
             produkter[index].count--;
+            update(e.target);
         }
-
-        if(produkter[index].count < 0){
-            produkter[index].count = 0;
+        
+        function update(knap){
+            if(produkter[index].count < 0){
+                produkter[index].count = 0;
+            }
+            produkter[index].totalPris = produkter[index].count * produkter[index].pris;
+            knap.parentElement.querySelector('.antal').textContent = produkter[index].count;
+            knap.parentElement.querySelector('.pris').textContent = produkter[index].totalPris+'kr';
         }
-        produkter[index].totalPris = produkter[index].count * produkter[index].pris;
-        e.target.parentElement.querySelector('.antal').textContent = produkter[index].count;
-        e.target.parentElement.querySelector('.pris').textContent = produkter[index].totalPris+'kr';
     }
 });
