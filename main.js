@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
         {count:1, pris:275, totalPris:275}
     ];
 
-    for(let i=0; i<produktList.length; i++){
+    produktArray.forEach(function(product, i){
         produktList[i].addEventListener('click', skift);
-    }
+    });
 
     function skift(e){
         let index = produktArray.indexOf(e.currentTarget);
